@@ -67,9 +67,9 @@ ul.notice-list li a:hover {
   }
 
   nav a {
-    display: block;
-    margin: 8px 0;
-    font-size: 1em;
+    display: inline-block;
+    margin: 10px;
+    font-size: 1rem;
   }
 
   main {
@@ -78,8 +78,12 @@ ul.notice-list li a:hover {
   }
 
   footer {
-    font-size: 0.8em;
-    padding: 8px;
+    font-size: 1em;         /* 너무 작으면 0.9~1em으로 조절 */
+    padding: 12px 10px;       /* 상하 여백을 조금 늘려서 안정감 있게 */
+    margin-top: 30px;         /* 본문과 푸터 사이 여백 확보 */
+    background-color: #f0f0f0;
+    text-align: center;
+    color: #555;
     position: static; /* 모바일에서는 고정 위치가 불편할 수 있어요 */
   }
 
@@ -91,3 +95,4 @@ ul.notice-list li a:hover {
     font-size: 1em;
   }
 }
+
