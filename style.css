@@ -1,0 +1,55 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+nav {
+  background-color: #f0f0f0;
+  padding: 10px;
+  text-align: center;
+}
+
+nav a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+
+nav a:hover {
+  color: #007acc;
+}
+
+main {
+  padding: 20px;
+  text-align: center;
+}
+
+footer {
+  background-color: #f0f0f0;
+  text-align: center;
+  padding: 10px;
+  font-size: 0.9em;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+}
+
+ul.notice-list {
+  list-style: none;
+  padding: 0;
+}
+
+ul.notice-list li {
+  padding: 8px 0;
+  border-bottom: 1px solid #ccc;
+}
+
+ul.notice-list li a {
+  color: #007acc;
+  text-decoration: none;
+}
+ul.notice-list li a:hover {
+  text-decoration: underline;
+}
