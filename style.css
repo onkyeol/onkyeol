@@ -56,8 +56,11 @@ ul.notice-list li a:hover {
 }
 
 /* 모바일 화면 대응: 화면 너비가 768px 이하일 때만 적용 */
-@media (max-width: 730px) {
+@media (max-width: 700px) {
   html, body {
+  padding: 0;
+  overflow-x: hidden; /* 좌우 스크롤 방지 */
+  box-sizing: border-box;
   height: 100%;
   margin: 0;
   }
@@ -73,6 +76,7 @@ ul.notice-list li a:hover {
     padding: 10px;
     display: flex;
     flex-direction: column;
+    min-height: 100vh; /* 화면 전체 높이 확보 */
   }
 
   nav {
@@ -90,7 +94,7 @@ ul.notice-list li a:hover {
     max-width: 600px;
     margin: 0 auto;
     text-align: center;
-    flex: 1;
+    flex: 1; /* 푸터를 밀어내지 않도록 메인 영역이 유연하게 확장됨 */
   }
 
   footer {
@@ -101,6 +105,7 @@ ul.notice-list li a:hover {
     text-align: center;
     position: static; /* 모바일에서는 고정 위치가 불편할 수 있어요 */
     width: 100%;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
   }
 
   ul.notice-list {
@@ -121,6 +126,7 @@ ul.notice-list li a:hover {
     font-size: 1em;
   }
 }
+
 
 
 
