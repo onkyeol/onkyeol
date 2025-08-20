@@ -15,6 +15,9 @@ nav a {
   text-decoration: none;
   color: #333;
   font-weight: bold;
+  padding: 6px 10px; /* ✅ hover와 동일하게 맞춰줌 */
+  border-radius: 4px; /* 둥글게 처리는 유지해도 무방 */
+  transition: all 0.2s ease-in-out;
 }
 
 nav a:hover {
@@ -45,20 +48,28 @@ ul.notice-list {
 }
 
 ul.notice-list li {
-  padding: 8px 0;
-  border-bottom: 1px solid #ccc;
+  padding: 12px 0;
+  background-color: transparent;
+  box-shadow: none; /* 아주 얇은 그림자 */
+  border-bottom: none; /* ✅ 선 제거 */
 }
 
 ul.notice-list li a {
-  color: #007acc;
+  font-size: 1.05em;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  color: #DAA520; /* 진한 골드 */
+  display: inline-block;
+  padding: 6px 12px;
   text-decoration: none;
 }
 ul.notice-list li a:hover {
-  text-decoration: underline;
-
+  background-color: rgba(218, 165, 32, 0.1); /* 골드 느낌의 투명 배경 */
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+  box-shadow: inset 0 -2px 0 #DAA520; /* 골드색 얇은 밑줄 느낌 */
+  text-decoration: none;
 }
-
-
 
 
 #pagination {
@@ -168,6 +179,7 @@ ul.notice-list li a:hover {
     font-size: 1em;
   }
 }
+
 
 
 
