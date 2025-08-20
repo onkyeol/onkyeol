@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>공시/게시판 - 온결 주식회사</title>
+  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="notices.js" defer></script>
+  <script defer>
+    document.addEventListener("DOMContentLoaded", () => {
+      const list = document.getElementById("notice-list");
+      const content = document.getElementById("content");
+
+      // 게시글 목록 생성
+      notices.forEach((notice, index) => {
+        const li = document.createElement("li");
+        const a = document.createElement("a");
+        a.href = "#";
+        a.textContent = `[${notice.date}] ${notice.title}`;
+        a.onclick = () => {
+          loadPost(notice.file);
+
+          content.innerHTML = "<p>불러오는 중...</p>";
+          fetch(notice.file)
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const doc = parser.parseFromString(html, "text/html");
+              const main = doc.querySelector("main") || doc.body;
+              content.innerHTML = main.innerHTML;
+            })
+            .catch(() => {
+              content.innerHTML = "<p>내용을 불러올 수 없습니다.</p>";
+            });
+
+          return false;
+        };
+        li.appendChild(a);
+        list.appendChild(li);
+      });
+
+      // 게시글 불러오기
+      function loadPost(file) {
+        content.innerHTML = "<p>불러오는 중...</p>";
+        fetch(file)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, "text/html");
+            const main = doc.querySelector("main") || doc.body;
+            content.innerHTML = main.innerHTML;
+          })
+          .catch(() => {
+            content.innerHTML = "<p>내용을 불러올 수 없습니다.</p>";
+          });
+      }
+    });
+  </script>
+  <style>
+
+    #notice-list li {
+      margin-bottom: 0.5rem;
+    }
+
+    #content {
+      margin-top: 2rem;
+      padding: 1rem;
+      border: 1px solid #ddd;
+      background: #f9f9f9;
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html">홈</a>
+  <a href="about.html">회사소개</a>
+  <a href="services.html">서비스</a>
+  <a href="shop.html">온라인판매</a>
+  <a href="notice.html">공시/게시판</a>
+  <a href="contact.html">문의하기</a>
+</nav>
+
+<main>
+  <h1>공시/게시판</h1>
+  <ul id="notice-list" class="notice-list"></ul>
+  <div id="content">게시글을 선택하면 여기에 표시됩니다.</div>
+</main>
+
+<footer>
+  &copy; 2025 온결 주식회사
+</footer>
+
+</body>
+</html>
