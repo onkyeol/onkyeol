@@ -109,7 +109,7 @@ ul.notice-list li a:hover {
   }
 
   ul.notice-list {
-  display: flex;
+  display: block;
   flex-wrap: wrap; /* 넘치면 자동 줄바꿈 */
   justify-content: center; /* 가운데 정렬 */
   padding: 0;
@@ -119,13 +119,19 @@ ul.notice-list li a:hover {
 }
   
   ul.notice-list li {
+    display: block;
+    width: 100%;
+    text-align: center;
     padding: 12px 0;
   }
 
   ul.notice-list li a {
+    display: inline-block;
+    text-align: center;
     font-size: 1em;
   }
 }
+
 
 
 
