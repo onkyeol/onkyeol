@@ -71,6 +71,11 @@
         listItems.forEach((item, index) => {
           item.style.display = (index >= (page - 1) * itemsPerPage && index < page * itemsPerPage) ? 'block' : 'none';
         });
+              // 버튼 스타일 업데이트
+      const buttons = pagination.querySelectorAll('button');
+      buttons.forEach((btn, idx) => {
+        btn.classList.toggle('active', idx + 1 === page);
+        });
       }
 
       function setupPagination() {
@@ -105,5 +110,6 @@
   
 </body>
 </html>
+
 
 
