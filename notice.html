@@ -6,56 +6,7 @@
   <link rel="stylesheet" href="style.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="notices.js" defer></script>
-  <script defer>
-    document.addEventListener("DOMContentLoaded", () => {
-      const list = document.getElementById("notice-list");
-      const content = document.getElementById("content");
-
-      // 게시글 목록 생성
-      notices.forEach((notice, index) => {
-        const li = document.createElement("li");
-        const a = document.createElement("a");
-        a.href = "#";
-        a.textContent = `[${notice.date}] ${notice.title}`;
-        a.onclick = () => {
-          loadPost(notice.file);
-
-          content.innerHTML = "<p>불러오는 중...</p>";
-          fetch(notice.file)
-            .then(res => res.text())
-            .then(html => {
-              const parser = new DOMParser();
-              const doc = parser.parseFromString(html, "text/html");
-              const main = doc.querySelector("main") || doc.body;
-              content.innerHTML = main.innerHTML;
-            })
-            .catch(() => {
-              content.innerHTML = "<p>내용을 불러올 수 없습니다.</p>";
-            });
-
-          return false;
-        };
-        li.appendChild(a);
-        list.appendChild(li);
-      });
-
-      // 게시글 불러오기
-      function loadPost(file) {
-        content.innerHTML = "<p>불러오는 중...</p>";
-        fetch(file)
-          .then(res => res.text())
-          .then(html => {
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(html, "text/html");
-            const main = doc.querySelector("main") || doc.body;
-            content.innerHTML = main.innerHTML;
-          })
-          .catch(() => {
-            content.innerHTML = "<p>내용을 불러올 수 없습니다.</p>";
-          });
-      }
-    });
-  </script>
+ 
   <style>
 
     #notice-list li {
@@ -91,5 +42,66 @@
   &copy; 2025 온결 주식회사
 </footer>
 
+<!-- ✅ 여기에 자바스크립트 삽입 -->
+  <script>
+    const itemsPerPage = 5; // 페이지당 게시글 수
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const list = document.getElementById("notice-list");
+      const content = document.getElementById("content");
+
+      notices.forEach((notice, index) => {
+        const li = document.createElement("li");
+        const a = document.createElement("a");
+        a.href = "#";
+        a.textContent = `[${notice.date}] ${notice.title}`;
+        a.onclick = () => {
+          loadPost(notice.file);
+          return false;
+        };
+        li.appendChild(a);
+        list.appendChild(li);
+      });
+
+      const listItems = document.querySelectorAll('#notice-list li');
+      const pagination = document.getElementById('pagination');
+
+      function showPage(page) {
+        listItems.forEach((item, index) => {
+          item.style.display = (index >= (page - 1) * itemsPerPage && index < page * itemsPerPage) ? 'block' : 'none';
+        });
+      }
+
+      function setupPagination() {
+        const pageCount = Math.ceil(listItems.length / itemsPerPage);
+        for (let i = 1; i <= pageCount; i++) {
+          const btn = document.createElement('button');
+          btn.textContent = i;
+          btn.onclick = () => showPage(i);
+          pagination.appendChild(btn);
+        }
+      }
+
+      setupPagination();
+      showPage(1);
+
+      function loadPost(file) {
+        content.innerHTML = "<p>불러오는 중...</p>";
+        fetch(file)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, "text/html");
+            const main = doc.querySelector("main") || doc.body;
+            content.innerHTML = main.innerHTML;
+          })
+          .catch(() => {
+            content.innerHTML = "<p>내용을 불러올 수 없습니다.</p>";
+          });
+      }
+    });
+  </script>
+  
 </body>
 </html>
+
