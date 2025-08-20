@@ -50,8 +50,11 @@
     document.addEventListener("DOMContentLoaded", () => {
       const list = document.getElementById("notice-list");
       const content = document.getElementById("content");
+       // 🔽 여기에 정렬 코드 추가!
+      const sortedNotices = notices.sort((a, b) => new Date(b.date) - new Date(a.date));
 
-      notices.forEach((notice, index) => {
+       // 🔽 정렬된 배열로 리스트 생성
+      sortedNotices.forEach((notice, index) => {
         const li = document.createElement("li");
         const a = document.createElement("a");
         a.href = "#";
@@ -110,6 +113,7 @@
   
 </body>
 </html>
+
 
 
 
