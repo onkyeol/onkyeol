@@ -67,6 +67,17 @@
         list.appendChild(li);
       });
 
+      // 🔽 부족한 줄만큼 빈 li 추가
+const currentCount = sortedNotices.length;
+if (currentCount < itemsPerPage) {
+  for (let i = currentCount; i < itemsPerPage; i++) {
+    const emptyLi = document.createElement("li");
+    emptyLi.className = "empty-row";
+    emptyLi.innerHTML = "&nbsp;"; // 빈 줄
+    list.appendChild(emptyLi);
+  }
+}
+
       const listItems = document.querySelectorAll('#notice-list li');
       const pagination = document.getElementById('pagination');
 
@@ -113,6 +124,7 @@
   
 </body>
 </html>
+
 
 
 
