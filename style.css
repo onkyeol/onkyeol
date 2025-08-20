@@ -18,7 +18,10 @@ nav a {
 }
 
 nav a:hover {
-  color: #007acc;
+  color: #DAA520; /* 골드 글씨 */
+  background-color: #002147; /* 네이비 배경 */
+  border-radius: 4px; /* 둥글게 처리하면 더 예쁠 수 있어 */
+  padding: 6px 10px;
 }
 
 main {
@@ -69,25 +72,28 @@ ul.notice-list li a:hover {
   font-size: 0.85rem;
   border: none;
   border-radius: 3px;
-  background-color: #0078D4;
-  color: white;
+  background-color: #002147; /* 네이비 */
+  color: #DAA520; /* 황금색 골드 */
+  margin: 4px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
 /* ✅ active가 아닌 버튼에만 hover 효과 적용 */
 #pagination button:not(.active):hover {
-  background-color: #005A9E;
+  background-color: #003366; /* 네이비 조금 밝게 */
 }
 
 #pagination button.active {
-  background-color: #004578;
+  background-color: #DAA520; /* 황금색 골드 배경 */
+  color: #002147; /* 네이비 글씨 */
+  font-weight: bold;
 }
 
 
 
 /* 모바일 화면 대응: 화면 너비가 768px 이하일 때만 적용 */
-@media (max-width: 700px) {
+@media (max-width: 768px) {
   html, body {
   padding: 0;
   overflow-x: hidden; /* 좌우 스크롤 방지 */
@@ -162,6 +168,7 @@ ul.notice-list li a:hover {
     font-size: 1em;
   }
 }
+
 
 
 
